@@ -17,29 +17,29 @@
 /**
  * Provides the restore activity task class
  *
- * @package   mod_simplemod
+ * @package   mod_sandbox
  * @category  backup
  * @copyright 2019 Richard Jones richardnz@outlook.com
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://github.com/moodlehq/moodle-mod_simplemod
- * @see https://github.com/justinhunt/moodle-mod_simplemod
+ * @see https://github.com/moodlehq/moodle-mod_sandbox
+ * @see https://github.com/justinhunt/moodle-mod_sandbox
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot . '/mod/simplemod/backup/moodle2/restore_simplemod_stepslib.php');
+require_once($CFG->dirroot . '/mod/sandbox/backup/moodle2/restore_sandbox_stepslib.php');
 
 /**
- * Restore task for the simplemod activity module
+ * Restore task for the sandbox activity module
  *
  * Provides all the settings and steps to perform complete restore of the activity.
  *
- * @package   mod_simplemod
+ * @package   mod_sandbox
  * @category  backup
  * @copyright 2019 Richard Jones richardnz@outlook.com
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class restore_simplemod_activity_task extends restore_activity_task {
+class restore_sandbox_activity_task extends restore_activity_task {
 
     /**
      * Define (add) particular settings this activity can have
@@ -53,7 +53,7 @@ class restore_simplemod_activity_task extends restore_activity_task {
      */
     protected function define_my_steps() {
         // We have just one structure step here.
-        $this->add_step(new restore_simplemod_activity_structure_step('simplemod_structure', 'simplemod.xml'));
+        $this->add_step(new restore_sandbox_activity_structure_step('sandbox_structure', 'sandbox.xml'));
     }
 
     /**
@@ -63,7 +63,7 @@ class restore_simplemod_activity_task extends restore_activity_task {
     static public function define_decode_contents() {
         $contents = array();
 
-        $contents[] = new restore_decode_content('simplemod', array('intro'), 'simplemod');
+        $contents[] = new restore_decode_content('sandbox', array('intro'), 'sandbox');
 
         return $contents;
     }
@@ -75,8 +75,8 @@ class restore_simplemod_activity_task extends restore_activity_task {
     static public function define_decode_rules() {
         $rules = array();
 
-        $rules[] = new restore_decode_rule('SIMPLEMODVIEWBYID', '/mod/simplemod/view.php?id=$1', 'course_module');
-        $rules[] = new restore_decode_rule('SIMPLEMODINDEX', '/mod/simplemod/index.php?id=$1', 'course');
+        $rules[] = new restore_decode_rule('sandboxVIEWBYID', '/mod/sandbox/view.php?id=$1', 'course_module');
+        $rules[] = new restore_decode_rule('sandboxINDEX', '/mod/sandbox/index.php?id=$1', 'course');
 
         return $rules;
 
@@ -85,15 +85,15 @@ class restore_simplemod_activity_task extends restore_activity_task {
     /**
      * Define the restore log rules that will be applied
      * by the {@link restore_logs_processor} when restoring
-     * simplemod logs. It must return one array
+     * sandbox logs. It must return one array
      * of {@link restore_log_rule} objects
      */
     static public function define_restore_log_rules() {
         $rules = array();
 
-        $rules[] = new restore_log_rule('simplemod', 'add', 'view.php?id={course_module}', '{simplemod}');
-        $rules[] = new restore_log_rule('simplemod', 'update', 'view.php?id={course_module}', '{simplemod}');
-        $rules[] = new restore_log_rule('simplemod', 'view', 'view.php?id={course_module}', '{simplemod}');
+        $rules[] = new restore_log_rule('sandbox', 'add', 'view.php?id={course_module}', '{sandbox}');
+        $rules[] = new restore_log_rule('sandbox', 'update', 'view.php?id={course_module}', '{sandbox}');
+        $rules[] = new restore_log_rule('sandbox', 'view', 'view.php?id={course_module}', '{sandbox}');
 
         return $rules;
     }
@@ -112,9 +112,9 @@ class restore_simplemod_activity_task extends restore_activity_task {
         $rules = array();
 
         // Fix old wrong uses (missing extension)
-        $rules[] = new restore_log_rule('simplemod', 'view all', 'index?id={course}', null,
+        $rules[] = new restore_log_rule('sandbox', 'view all', 'index?id={course}', null,
                                         null, null, 'index.php?id={course}');
-        $rules[] = new restore_log_rule('simplemod', 'view all', 'index.php?id={course}', null);
+        $rules[] = new restore_log_rule('sandbox', 'view all', 'index.php?id={course}', null);
 
         return $rules;
     }

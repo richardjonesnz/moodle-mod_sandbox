@@ -17,12 +17,12 @@
 /**
  * Simple debugging class
  *
- * @package    mod_simplemod
+ * @package    mod_sandbox
  * @copyright  2019 Richard Jones richardnz@outlook.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace mod_simplemod\local;
+namespace mod_sandbox\local;
 
 defined('MOODLE_INTERNAL') || die();
 

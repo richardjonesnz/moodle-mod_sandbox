@@ -16,33 +16,35 @@
 
 
 /**
- * English strings for simplemod
+ * English strings for sandbox
  *
  * You can have a rather longer description of the file as well,
  * if you like, and it can span multiple lines.
  *
- * @package    mod_simplemod
+ * @package    mod_sandbox
  * @copyright  2019 Richard Jones richardnz@outlook.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://github.com/moodlehq/moodle-mod_simplemod
- * @see https://github.com/justinhunt/moodle-mod_simplemod
+ * @see https://github.com/moodlehq/moodle-mod_sandbox
+ * @see https://github.com/justinhunt/moodle-mod_sandbox
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['modulename'] = 'simplemod';
-$string['modulenameplural'] = 'simplemods';
-$string['modulename_help'] = 'Use the simplemod module for... | The simplemod module allows...';
-$string['simplemod:addinstance'] = 'Add a new simplemod';
-$string['simplemod:submit'] = 'Submit simplemod';
-$string['simplemod:view'] = 'View simplemod';
-$string['simplemodfieldset'] = 'Custom example fieldset';
-$string['simplemodname'] = 'simplemod name';
-$string['simplemodname_help'] = 'This is the content of the help tooltip associated with the simplemodname field. Markdown syntax is supported.';
-$string['simplemod'] = 'simplemod';
-$string['pluginadministration'] = 'simplemod administration';
-$string['pluginname'] = 'simplemod';
-$string['nosimplemods'] = 'No instances';
+$string['modulename'] = 'sandbox';
+$string['modulenameplural'] = 'sandboxs';
+$string['modulename_help'] = 'Use the sandbox module for... | The sandbox module allows...';
+$string['sandbox:addinstance'] = 'Add a new sandbox';
+$string['sandbox:submit'] = 'Submit sandbox';
+$string['sandbox:view'] = 'View sandbox';
+$string['sandboxfieldset'] = 'Custom example fieldset';
+$string['sandboxname'] = 'sandbox name';
+$string['sandboxname_help'] = 'This is the content of the help tooltip associated with the sandboxname field. Markdown syntax is supported.';
+$string['sandbox'] = 'sandbox';
+$string['pluginadministration'] = 'sandbox administration';
+$string['pluginname'] = 'sandbox';
+$string['nosandboxs'] = 'No instances';
 
-// Mod form specific simplemod settings.
+// Mod form specific sandbox settings.
 $string['title'] = 'Activity Title: ';
+$string['whereami'] = "You are at: ";
+$string['modalbtn'] = "Clear content";

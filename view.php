@@ -15,56 +15,57 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Prints a particular instance of simplemod
+ * Prints a particular instance of sandbox
  *
- * @package    mod_simplemod
+ * @package    mod_sandbox
  * @copyright  2019 Richard Jones richardnz@outlook.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://github.com/moodlehq/moodle-mod_simplemod
- * @see https://github.com/justinhunt/moodle-mod_simplemod */
+ * @see https://github.com/moodlehq/moodle-mod_sandbox
+ * @see https://github.com/justinhunt/moodle-mod_sandbox */
 
-use mod_simplemod\output\view;
+use mod_sandbox\output\view;
 require_once('../../config.php');
 
 // We need the course module id (id) or
-// the simplemod instance id (n).
+// the sandbox instance id (n).
 $id = optional_param('id', 0, PARAM_INT);
 $n  = optional_param('n', 0, PARAM_INT);
 
 if ($id) {
-    $cm = get_coursemodule_from_id('simplemod', $id, 0, false,
+    $cm = get_coursemodule_from_id('sandbox', $id, 0, false,
             MUST_EXIST);
     $course = $DB->get_record('course',
             array('id' => $cm->course), '*', MUST_EXIST);
-    $simplemod = $DB->get_record('simplemod',
+    $sandbox = $DB->get_record('sandbox',
             array('id' => $cm->instance), '*', MUST_EXIST);
 } else if ($n) {
-    $simplemod = $DB->get_record('simplemod', array('id' => $n), '*',
+    $sandbox = $DB->get_record('sandbox', array('id' => $n), '*',
             MUST_EXIST);
     $course = $DB->get_record('course',
-            array('id' => $simplemod->course), '*', MUST_EXIST);
-    $cm = get_coursemodule_from_instance('simplemod', $simplemod->id,
+            array('id' => $sandbox->course), '*', MUST_EXIST);
+    $cm = get_coursemodule_from_instance('sandbox', $sandbox->id,
             $course->id, false, MUST_EXIST);
 }
 
 // Print the page header.
-$PAGE->set_url('/mod/simplemod/view.php', array('id' => $cm->id));
+$PAGE->set_url('/mod/sandbox/view.php', array('id' => $cm->id));
 
 require_login($course, true, $cm);
 
 // Set the page information.
-$PAGE->set_title(format_string($simplemod->name));
+$PAGE->set_title(format_string($sandbox->name));
 $PAGE->set_heading(format_string($course->fullname));
 
 // Check for intro page content.
-if (!$simplemod->intro) {
-    $simplemod->intro = '';
+if (!$sandbox->intro) {
+    $sandbox->intro = '';
 }
-// Start output to browser.
+
+// Output the header.
 echo $OUTPUT->header();
 
 // Call classes/output/view and view.mustache to create output.
-echo $OUTPUT->render(new view($simplemod, $cm->id));
+echo $OUTPUT->render(new view($sandbox, $cm->id));
 
 // End output to browser.
 echo $OUTPUT->footer();

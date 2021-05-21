@@ -15,16 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Prints a particular instance of simplemod
+ * Prints a particular instance of sandbox
  *
- * @package    mod_simplemod
+ * @package    mod_sandbox
  * @copyright  202 Richard Jones richardnz@outlook.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://github.com/moodlehq/moodle-mod_simplemod
- * @see https://github.com/justinhunt/moodle-mod_simplemod
+ * @see https://github.com/moodlehq/moodle-mod_sandbox
+ * @see https://github.com/justinhunt/moodle-mod_sandbox
  */
 
-namespace mod_simplemod\output;
+namespace mod_sandbox\output;
 
 use renderable;
 use renderer_base;
@@ -32,7 +32,7 @@ use templatable;
 use stdClass;
 
 /**
- * Simplemod: Create a new view page renderable object
+ * sandbox: Create a new view page renderable object
  *
  * @param string title - intro page title.
  * @param int height - course module id.
@@ -41,12 +41,12 @@ use stdClass;
 
 class view implements renderable, templatable {
 
-    protected $simplemod;
+    protected $sandbox;
     protected $id;
 
-    public function __construct($simplemod, $id) {
+    public function __construct($sandbox, $id) {
 
-        $this->simplemod = $simplemod;
+        $this->sandbox = $sandbox;
         $this->id = $id;
     }
     /**
@@ -59,10 +59,10 @@ class view implements renderable, templatable {
 
         $data = new stdClass();
 
-        $data->title = $this->simplemod->title;
+        $data->title = $this->sandbox->title;
         // Moodle handles processing of std intro field.
-        $data->body = format_module_intro('simplemod',
-                $this->simplemod, $this->id);
+        $data->body = format_module_intro('sandbox',
+                $this->sandbox, $this->id);
 
         return $data;
     }
