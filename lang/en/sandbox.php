@@ -48,3 +48,8 @@ $string['nosandboxs'] = 'No instances';
 $string['title'] = 'Activity Title: ';
 $string['whereami'] = "You are at: ";
 $string['modalbtn'] = "Clear content";
+
+// Bootstrap Modal.
+$string['label'] = 'Bootstrap modal';
+$string['comment'] = 'Make a comment';
+$string['bootbtn'] = 'Comment';
