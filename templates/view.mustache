@@ -46,6 +46,7 @@
             <div class="mod_sandbox_content">
                 <button id="mdlbtn" type="button" class="btn btn-secondary mt-1">{{# str }} modalbtn, mod_sandbox {{/ str }}</button>
                 <button id="bootbtn" type="button" class="btn btn-secondary mt-1">{{# str }} bootbtn, mod_sandbox {{/ str }}</button>
+                <button id="renderbtn" type="button" class="btn btn-secondary mt-1">{{# str }} renderbtn, mod_sandbox {{/ str }}</button>
                 <br><br><p></p>
             </div>
         </div>
@@ -56,15 +57,21 @@
         <div class="mod_sandbox_modal_content">
             {{! A close button }}
             <span class="mod_sandbox_close"><i class="fa fa-times"></i></span>
-            <div class="block_model_details">
+            <div class="mod_sandbox_details">
                 <p>{{#str}} label, mod_sandbox {{/str}}</p>
             </div>
-            <div class="block_model_form">
+            <div class="mod_sandbox_form">
                 <div class="col-xs-4">
                     <label for="ex3">{{#str}} comment, mod_sandbox {{/str}}</label>
                     <input class="form-control" id="ex3" type="text">
                 </div>
             </div>
+        </div>
+    </div>
+    {{! Render a template from JavaScript }}
+    <div class="card">
+        <div class="mod_sandbox_render">
+            {{> mod_sandbox/renderme}}
         </div>
     </div>
 </div>
@@ -85,4 +92,10 @@
             module.boot_modal();
         }
     );
+    require(['mod_sandbox/renderme'],
+        function(module) {
+            module.render_content();
+        }
+    );
+
 {{/js}}

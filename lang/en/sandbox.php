@@ -53,3 +53,6 @@ $string['modalbtn'] = "Clear content";
 $string['label'] = 'Bootstrap modal';
 $string['comment'] = 'Make a comment';
 $string['bootbtn'] = 'Comment';
+
+// Render template.
+$string['renderbtn'] = 'Add content';
