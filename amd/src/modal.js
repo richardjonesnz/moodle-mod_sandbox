@@ -15,11 +15,14 @@ export const show_modal = () => {
       .then(function(modal) {
           // The trigger button for showing the modal.
           const trigger = document.getElementById('mdlbtn');
-          // A sample paragraph of output in the template.
+          // Display element - some sample content.
           const output = document.getElementById('mod_sandbox_output');
           const root = modal.getRoot();
+          // Add the event trigger (avoiding .onclick).
+          trigger.addEventListener('click', confirm);
+
           // When button clicked.
-          trigger.onclick = function() {
+          function confirm() {
               // Convenient to use the log for debugging.
               Log.info('Button clicked');
               // If save is selected then go ahead and delete the content.
@@ -27,9 +30,9 @@ export const show_modal = () => {
                   output.innerHTML = '';
               });
               modal.show();
-          };
+          }
       })
-      .done(function(modal) {
+      .then(function(modal) {
           modal.close();
     });
 };
