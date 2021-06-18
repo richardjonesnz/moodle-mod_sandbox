@@ -75,8 +75,8 @@ class restore_sandbox_activity_task extends restore_activity_task {
     static public function define_decode_rules() {
         $rules = array();
 
-        $rules[] = new restore_decode_rule('sandboxVIEWBYID', '/mod/sandbox/view.php?id=$1', 'course_module');
-        $rules[] = new restore_decode_rule('sandboxINDEX', '/mod/sandbox/index.php?id=$1', 'course');
+        $rules[] = new restore_decode_rule('SANDBOXVIEWBYID', '/mod/sandbox/view.php?id=$1', 'course_module');
+        $rules[] = new restore_decode_rule('SANDBOXINDEX', '/mod/sandbox/index.php?id=$1', 'course');
 
         return $rules;
 

@@ -65,11 +65,11 @@ class backup_sandbox_activity_task extends backup_activity_task {
 
         // Link to the list of sandboxs.
         $search = '/('.$base.'\/mod\/sandbox\/index.php\?id\=)([0-9]+)/';
-        $content = preg_replace($search, '$@sandboxINDEX*$2@$', $content);
+        $content = preg_replace($search, '$@SANDBOXINDEX*$2@$', $content);
 
         // Link to sandbox view by moduleid.
         $search = '/('.$base.'\/mod\/sandbox\/view.php\?id\=)([0-9]+)/';
-        $content = preg_replace($search, '$@sandboxVIEWBYID*$2@$', $content);
+        $content = preg_replace($search, '$@SANDBOXVIEWBYID*$2@$', $content);
 
         return $content;
     }
